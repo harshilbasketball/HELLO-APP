@@ -1,36 +1,23 @@
-import java.util.Scanner;
+public class UC5 {
 
-class UC5 {
-    public static void main(String[] args ){
-        Scanner input = new Scanner(System.in);
+    public static void main(String[] args) {
 
-        System.out.print("Enter  a number: ");
-        int number = input.nextInt();
+        if (args.length == 0) {
+            System.out.println("Hello, World!");
+            return;
+        }
 
-        if (number < 0) {
-            System.err.println("Invalid Number . ");
-            System.exit(0);
-            
+        StringBuilder nameBuilder = new StringBuilder();
+        boolean first = true;
+
+        for (String name : args) {
+            if (!first) {
+                nameBuilder.append(", ");
+            }
+            nameBuilder.append(name);
+            first = false;
         }
-        int count = 0;
-         int temp = number;
-         while (temp > 0) {
-            count++;
-            temp /= 10;
-                
-        }
-        int[] digits = new int[count];
-        for(int i = 0; i < count ; i++){
-            digits[i] = number % 10;
-            number /= 10;
-        }
-        int sum = 0;
-        for(int i = 0; i < count; i++) {
-            sum += digits[i];
-        } 
-        System.out.println("\nSum of Digits: " + sum);
-        
-        input.close();
-            
-        }
+
+        System.out.println("Hello, " + nameBuilder + "!");
     }
+}
